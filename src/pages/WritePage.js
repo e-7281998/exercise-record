@@ -83,12 +83,25 @@ const WritePage = () => {
             setMsg("운동 종목 당 최대 3개 입력 가능합니다.");
             return;
         }
+        else
+            setMsg("");
+
         setAddMemo(() => list);
         localStorage.setItem(exercise, JSON.stringify(list));
         setMemo(() => '');
     }
     const onChange = (e) => {
         setMemo(() => e.target.value);
+    }
+
+    //메모 삭제
+    const onRemove = (e) => {
+        const list = JSON.parse(localStorage.getItem(exercise)).filter((memo) => memo !== e.target.value);
+        if (list.length === 0)  //메모가 다 삭제 되었다면 로컬에서 종목도 삭제
+            localStorage.removeItem(exercise);
+        else
+            localStorage.setItem(exercise, JSON.stringify(list));
+        setAddMemo(() => list);
     }
 
     return (
@@ -124,7 +137,20 @@ const WritePage = () => {
                     <span>{msg}</span>
                 </form>
                 : ''}
-
+            <ul>
+                {localStorage.getItem(exercise) ?
+                    JSON.parse(localStorage.getItem(exercise)).map(
+                        (memo, n) =>
+                            <li
+                                key={n}
+                            >
+                                {memo}
+                                <button
+                                    onClick={onRemove}
+                                    value={memo}>삭제</button>
+                            </li>
+                    ) : ''}
+            </ul>
         </Write >
     )
 }
