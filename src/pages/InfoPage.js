@@ -49,6 +49,17 @@ const InfoBox = styled.div`
     }
 `;
 
+const now = () => {
+    const now = new Date();
+    localStorage.setItem('start', JSON.stringify(now.getTime()));
+    const start = JSON.parse(localStorage.getItem('start'));
+    //시작한지 n일 계산
+    // const today = new Date();
+    // const day = today.getTime() - start;
+    // const passed = Math.round(day / (1000 * 60 * 60 * 24));
+    // console.log(passed);
+}
+
 const InfoPage = () => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
@@ -81,6 +92,7 @@ const InfoPage = () => {
         setMsg(() => '');
         localStorage.setItem('name', JSON.stringify(name.trim()));
         localStorage.setItem('goal', JSON.stringify(goal.trim()));
+        now();
         navigate('/list');
     }
 
