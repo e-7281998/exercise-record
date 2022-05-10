@@ -66,6 +66,13 @@ const InfoPage = () => {
     const [msg, setMsg] = useState('');
     const navigate = useNavigate();
 
+    //정보가 이미 있으면 /list 로 이동
+    useEffect(() => {
+        if (localStorage.getItem("name") !== null)
+            navigate('/list');
+        return;
+    }, []);
+
     //이름, 목표 입력 input
     const onChangeName = (e) => {
         setName(() => e.target.value);
