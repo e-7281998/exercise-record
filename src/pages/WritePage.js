@@ -53,6 +53,24 @@ const WritePage = () => {
     const [exercise, setExercise] = useState('운동을 선택하세요.');
     const [addMemo, setAddMemo] = useState([]);
     const [msg, setMsg] = useState('');
+    const [fileImg, setFileImg] = useState('');
+    // const [fileName, setFileName] = useState('');
+
+    const data = new FormData();
+    const insertImg = (e) => {
+        const reader = new FileReader();
+        if (e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+            // setFileName(() => e.target.files[0].name);
+            reader.onloadend = () => {
+                const previewImgUrl = reader.result;
+                if (previewImgUrl)
+                    setFileImg(() => [...fileImg, previewImgUrl]);
+            }
+        }
+    }
+
+
     const onClickExercise = (e) => {
         setExercise(() => e.target.innerText);
     }
@@ -68,6 +86,8 @@ const WritePage = () => {
     //운동 종목 별 로컬에서 값 가져오기
     useEffect(() => {
         setAddMemo(() => JSON.parse(localStorage.getItem(exercise)) || []);
+        setMemo(() => '');
+        setMsg(() => '');
     }, [exercise]);
 
     //메모 추가하기
@@ -85,6 +105,11 @@ const WritePage = () => {
         }
         else
             setMsg("");
+
+        if (e.target.value.trim().length > 20) {
+            setMsg("최대 20자 입력이 가능합니다.");
+            return;
+        }
 
         setAddMemo(() => list);
         localStorage.setItem(exercise, JSON.stringify(list));
@@ -151,6 +176,15 @@ const WritePage = () => {
                             </li>
                     ) : ''}
             </ul>
+            <form>
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => insertImg(e)}
+                />
+                <img src={fileImg} style={{ width: '400px ' }} />
+                {/* <label>{fileName}</label> */}
+            </form>
         </Write >
     )
 }
