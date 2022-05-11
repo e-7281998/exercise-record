@@ -20,6 +20,10 @@ const exerciseList = [
 ].sort();
 
 const Write = styled.div` 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const EXList = styled.ul`
@@ -41,6 +45,24 @@ const EXList = styled.ul`
         border: 1px solid #333;
         display: inline-block;
 
+    }
+`
+const EXMemo = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+
+    div{
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    span{
+        display: block;
+    }
+    form{
+        padding: 1rem;
     }
 `
 const Info = styled.h3`
@@ -145,46 +167,51 @@ const WritePage = () => {
                     </li>)
                 }
             </EXList>
-            <span>{exercise}</span>
-            {exercise !== "운동을 선택하세요." ?
-                < form >
-                    <input
-                        placeholder="발에 힘 더 빼기"
-                        value={memo}
-                        onChange={onChange} />
-                    <button
-                        type="submit"
-                        onClick={onAddMemo}
-                        value={memo}
-                    >
-                        저장
-                    </button>
-                    <span>{msg}</span>
-                </form>
-                : ''}
-            <ul>
-                {localStorage.getItem(exercise) ?
-                    JSON.parse(localStorage.getItem(exercise)).map(
-                        (memo, n) =>
-                            <li
-                                key={n}
+            <EXMemo>
+                <div>
+                    <span>{exercise}</span>
+                    {exercise !== "운동을 선택하세요." ?
+                        < form >
+                            <input
+                                placeholder="발에 힘 더 빼기"
+                                value={memo}
+                                onChange={onChange} />
+                            <button
+                                type="submit"
+                                onClick={onAddMemo}
+                                value={memo}
                             >
-                                {memo}
-                                <button
-                                    onClick={onRemove}
-                                    value={memo}>삭제</button>
-                            </li>
-                    ) : ''}
-            </ul>
-            <form>
-                <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => insertImg(e)}
-                />
-                <img src={fileImg} style={{ width: '400px ' }} />
-                {/* <label>{fileName}</label> */}
-            </form>
+                                저장
+                            </button>
+                            <span>{msg}</span>
+                        </form>
+                        : ''}
+                    <ul>
+                        {localStorage.getItem(exercise) ?
+                            JSON.parse(localStorage.getItem(exercise)).map(
+                                (memo, n) =>
+                                    <li
+                                        key={n}
+                                    >
+                                        {memo}
+                                        <button
+                                            onClick={onRemove}
+                                            value={memo}>삭제</button>
+                                    </li>
+                            ) : ''}
+                    </ul>
+                </div>
+                <form>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => insertImg(e)}
+                    />
+                    <img src={fileImg} style={{ width: '400px ' }} />
+                    {/* <label>{fileName}</label> */}
+                </form>
+            </EXMemo>
+
         </Write >
     )
 }
