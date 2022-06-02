@@ -12,7 +12,6 @@ const WritePage = () => {
     const date = today.getDate();
     const hanDay = ['일', '월', '화', '수', '목', '금', '토']
     const day = hanDay[today.getDay()];
-    // console.log(year, month, date, day)
 
     const [exerciseList, addExerciseList] = useState(JSON.parse(localStorage.getItem('EXERCISE')) || ['걷기']);
     const [exerciseInput, setExerciseInput] = useState('')
@@ -21,7 +20,7 @@ const WritePage = () => {
     const [record, setRecord] = useState(JSON.parse(localStorage.getItem('recordList')) || [])
 
     //운동 종목 추가
-    const addExercise = (e) => {
+    function addExercise(e) {
         e.preventDefault();
         const newAddList = [...exerciseList, exerciseInput];
         addExerciseList(() => newAddList);
@@ -29,15 +28,15 @@ const WritePage = () => {
         setExerciseInput(() => '')
     }
     //메모 값
-    const changeExerciseInput = (e) => {
+    function changeExerciseInput(e) {
         setExerciseInput(() => e.target.value);
     }
     //운동 종목 선택 시 값 보이기
-    const clickExercise = (e) => {
+    function clickExercise(e) {
         setSelectExercise(() => e.target.innerText)
     }
     //메모 추가
-    const addRecord = (e) => {
+    function addRecord(e) {
         e.preventDefault();
         const newRecord = [
             ...record,
@@ -50,27 +49,25 @@ const WritePage = () => {
         setRecord(() => newRecord);
         save('recordList', newRecord);
         setExerciseInfo(() => '')
-        // localStorage.setItem('recordList', JSON.stringify(record));
     }
     //로컬에 저장
-    const save = (name, value) => {
+    function save(name, value) {
         localStorage.setItem(name, JSON.stringify(value));
     }
     //운동 종목 추가 입력 값
-    const changeExerciseInfo = (e) => {
+    function changeExerciseInfo(e) {
         setExerciseInfo(() => e.target.value);
     }
     //운동 종목 삭제
-    const exerciseRemove = (e) => {
+    function exerciseRemove(e) {
         const newRemoveList = exerciseList.filter((li, n) => parseInt(e.target.value) !== n);
         //운동 종목이 하나일 경우 삭제불가
         if (newRemoveList.length === 0) {
-            console.log('하나남음');
+            alert('운동 종목은 하나 이상 존재해야 합니다.');
             return;
         }
         addExerciseList(() => newRemoveList);
         save('EXERCISE', newRemoveList);
-
     }
 
     return (

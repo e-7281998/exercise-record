@@ -49,7 +49,7 @@ const InfoBox = styled.div`
     }
 `;
 
-const now = () => {
+function now() {
     const now = new Date();
     localStorage.setItem('start', JSON.stringify(now.getTime()));
     const start = JSON.parse(localStorage.getItem('start'));
@@ -74,15 +74,15 @@ const InfoPage = () => {
     }, []);
 
     //이름, 목표 입력 input
-    const onChangeName = (e) => {
+    function onChangeName(e) {
         setName(() => e.target.value);
     }
-    const onChangeGoal = (e) => {
+    function onChangeGoal(e) {
         setGoal(() => e.target.value);
     }
 
     // //저장하기 클릭 시 로컬스토리지에 이름, 목표 저장
-    const onClick = (e) => {
+    function onClick(e) {
         e.preventDefault();
         if (name === '' || goal === '') {
             setMsg(() => '빈 칸을 모두 채워주세요.');
