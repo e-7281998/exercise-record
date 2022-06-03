@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from "styled-components";
-import save from '../../common/save';
+import save from '../common/save';
 
 const P = styled.p`
     display: none;
@@ -20,7 +20,7 @@ const ShowExerciseList = () => {
     }
 
     function removeList(e) {
-        const check = window.confirm(`${parseInt(e.target.value) + 1}번 기록을 정말 삭제하시겠습니까?`);
+        const check = window.confirm(`${recordList.length - parseInt(e.target.value)}번 기록을 정말 삭제하시겠습니까?`);
         if (check) {
             const newList = recordList.filter((li, n) => n != e.target.value);
             setRecordList(() => newList);
