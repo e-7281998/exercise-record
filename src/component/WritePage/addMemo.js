@@ -1,5 +1,5 @@
 import { useState } from "react";
-import save from "../../common/save";
+import save from "../common/save";
 
 const AddMemo = () => {
     const today = new Date();

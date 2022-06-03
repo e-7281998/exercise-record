@@ -1,5 +1,5 @@
 import { useState } from "react";
-import save from "../../common/save";
+import save from "../common/save";
 
 const AddExercise = () => {
     const [exerciseList, addExerciseList] = useState(JSON.parse(localStorage.getItem('EXERCISE')) || ['걷기']);

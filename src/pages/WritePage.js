@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderInfo from "../common/headerInfo";
+import HeaderInfo from "../component/common/headerInfo";
 import AddExercise from "../component/WritePage/addExercise";
 import AddMemo from "../component/WritePage/addMemo";
 
