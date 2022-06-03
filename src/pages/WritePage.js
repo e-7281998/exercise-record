@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 
 const WritePage = () => {
@@ -74,17 +74,20 @@ const WritePage = () => {
         <>
             <div>
                 {name}님! "{goal}"을 시작한지 {passed}일 째 입니다.
-                <ul>
-                    {exerciseList.map((list, n) => (
-                        <li key={n}>
-                            <p onClick={clickExercise}>
-                                {list}
-                            </p>
-                            <button value={n} onClick={exerciseRemove}>X</button>
-                        </li>
-                    ))}
-                </ul>
             </div>
+            <div>
+                <a href="/list">기록보기</a>
+            </div>
+            <ul>
+                {exerciseList.map((list, n) => (
+                    <li key={n}>
+                        <p onClick={clickExercise}>
+                            {list}
+                        </p>
+                        <button value={n} onClick={exerciseRemove}>X</button>
+                    </li>
+                ))}
+            </ul>
             <form>
                 <input type="text" placeholder="복싱"
                     value={exerciseInput} onChange={changeExerciseInput}></input>
