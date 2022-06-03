@@ -20,14 +20,16 @@ const ShowExerciseList = () => {
     }
 
     function removeList(e) {
-        const newList = recordList.filter((li, n) => n != e.target.value);
-        // console.log(newList)
-        setRecordList(() => newList);
-        save('recordList', newList)
+        const check = window.confirm(`${parseInt(e.target.value) + 1}번 기록을 정말 삭제하시겠습니까?`);
+        if (check) {
+            const newList = recordList.filter((li, n) => n != e.target.value);
+            setRecordList(() => newList);
+            save('recordList', newList)
+        }
     }
 
     return (
-        <ul>
+        <ol reversed>
             {recordList.map((list, n) => (
                 <li key={n}>
                     <span>{list.EXERCISE}</span>
@@ -37,7 +39,7 @@ const ShowExerciseList = () => {
                     <P>{list.INFO}</P>
                 </li>
             ))}
-        </ul>
+        </ol>
     )
 }
 
