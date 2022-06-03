@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Info = styled.div`
@@ -65,10 +65,19 @@ const InfoPage = () => {
     const [goal, setGoal] = useState('');
     const [msg, setMsg] = useState('');
     const navigate = useNavigate();
+    const path = window.location.pathname;
+
+    //path 확인 후 초기정보 입력인지 , 정보 수정인지 판단
+    function checkPath() {
+        if (path == '/modify_info')
+            return false;
+        else
+            return true;
+    }
 
     //정보가 이미 있으면 /list 로 이동
     useEffect(() => {
-        if (localStorage.getItem("name") !== null)
+        if (localStorage.getItem("name") !== null && checkPath())
             navigate('/list');
         return;
     }, []);
@@ -99,8 +108,20 @@ const InfoPage = () => {
         setMsg(() => '');
         localStorage.setItem('name', JSON.stringify(name.trim()));
         localStorage.setItem('goal', JSON.stringify(goal.trim()));
-        now();
+        if (checkPath()) {  //처음에만 날짜 같이 저장
+            now();
+        }
         navigate('/list');
+    }
+    //초기화
+    function resetAll() {
+        const checkReset = window.confirm("모든 정보가 사라집니다. 정말 초기화 하시겠습니까?");
+        if (checkReset) {
+            localStorage.clear();
+            navigate('/');
+            setName(() => '');
+            setGoal(() => '')
+        }
     }
 
     //처음 이름, 목표 불러오기
@@ -137,7 +158,14 @@ const InfoPage = () => {
                 <button
                     type='submit'
                     onClick={onClick}
-                >저장하기</button>
+                >{checkPath() ? '저장하기' : '수정하기'}
+                </button>
+                {!checkPath() ?
+                    <>
+                        <button><a href="/list">돌아가기</a></button>
+                        <button onClick={resetAll}>초기화하기</button>
+                    </>
+                    : ''}
             </InfoForm>
         </Info>
     )

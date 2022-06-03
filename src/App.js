@@ -10,6 +10,7 @@ const App = () => {
       <Route element={<InfoPage />} path="/" />
       <Route element={<ListPage />} path="/list" />
       <Route element={<WritePage />} path="/write" />
+      <Route element={<InfoPage />} path="/modify_info" />
     </Routes>
   );
 }
