@@ -1,52 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
+import mainImg from '../img/운동_메인.jpg';
+
+const body = document.getElementsByTagName('body');
+body[0].style = `
+    width: 100%; 
+    height: ${window.innerHeight}px; 
+    background-image: url(${mainImg}); 
+    background-position: center;
+     background-size: cover; 
+     text-align: center;
+`
 const Info = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.5);
+    padding: 1.5rem;
+`;
+const InfoHeader = styled.header`
     h1{
-        text-align: center;
+        margin: 0;
     }
 `;
-
-const InfoForm = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    span {
-        color: red;
-        font-weight: bold;
-        margin: 1.5rem 0;
-    }
-    button{
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        &:hover{
-            cursor: pointer;
-        }
-    }
-`;
-
-const InfoBox = styled.div`
-    // width: 100%;
-    display: flex;
-    justify-content: center;
-    h3 {
-        display: inline-block;
-        padding: 0.5rem;
-    }
-    input {
-        border:  none;
-        border-bottom: 2px solid #ccc;
-        outline: none;
-        font-size: 1.125rem;
-        padding: 0 1rem;
-        margin: 1.125rem;
-        max-width: 300px;
-    }
+const InfoMain = styled.main`
 `;
 
 function now() {
@@ -136,37 +118,37 @@ const InfoPage = () => {
 
     return (
         <Info>
-            <h1>정보를 입력하세요.</h1>
-            <InfoForm>
-                <InfoBox>
-                    <h3>이름</h3>
-                    <input
-                        placeholder='홍길동'
-                        value={name}
-                        onChange={onChangeName}
-                    />
-                </InfoBox>
-                <InfoBox>
-                    <h3>목표</h3>
-                    <input
-                        placeholder='윗몸일으키기 1일 100회!'
-                        value={goal}
-                        onChange={onChangeGoal}
-                    />
-                </InfoBox>
+            <InfoHeader>
+                <h1>정보를 입력하세요.</h1>
+            </InfoHeader>
+            <InfoMain>
+                <h3>이름</h3>
+                <input
+                    placeholder='홍길동'
+                    value={name}
+                    onChange={onChangeName}
+                />
+                <h3>목표</h3>
+                <input
+                    placeholder='윗몸일으키기 1일 100회!'
+                    value={goal}
+                    onChange={onChangeGoal}
+                />
                 <span>{msg}</span>
-                <button
-                    type='submit'
-                    onClick={onClick}
-                >{checkPath() ? '저장하기' : '수정하기'}
-                </button>
-                {!checkPath() ?
-                    <>
-                        <button><a href="/list">돌아가기</a></button>
-                        <button onClick={resetAll}>초기화하기</button>
-                    </>
-                    : ''}
-            </InfoForm>
+                <div className='btn'>
+                    <button
+                        type='submit'
+                        onClick={onClick}
+                    >{checkPath() ? '저장하기' : '수정하기'}
+                    </button>
+                    {!checkPath() ?
+                        <>
+                            <button><a href="/list">돌아가기</a></button>
+                            <button onClick={resetAll}>초기화하기</button>
+                        </>
+                        : ''}
+                </div>
+            </InfoMain>
         </Info>
     )
 }
