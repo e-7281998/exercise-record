@@ -1,10 +1,36 @@
+@font-face {
+  font-family: 'Jua';
+  src: url('./font/Jua-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poor Story';
+  src: url('./font/PoorStory-Regular.ttf');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Jua', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #333;
+
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+button {
+  font-family: 'Jua', sans-serif;
+}
+
+input,
+textarea {
+  font-family: 'Poor Story', cursive;
 }
 
 code {

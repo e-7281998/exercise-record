@@ -5,12 +5,14 @@ import styled from 'styled-components';
 import mainImg from '../img/운동_메인.jpg';
 
 const body = document.getElementsByTagName('body');
+console.log(window.innerWidth);
 body[0].style = `
     width: 100%; 
     height: ${window.innerHeight}px; 
     background-image: url(${mainImg}); 
     background-position: center;
      background-size: cover; 
+     background-repeat: no-repeat;
      text-align: center;
 `
 const Info = styled.div`
@@ -20,15 +22,56 @@ const Info = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.8);
     padding: 1.5rem;
 `;
 const InfoHeader = styled.header`
     h1{
         margin: 0;
+        padding-bottom: 1.5rem;
+        font-weight: lighter;
     }
 `;
 const InfoMain = styled.main`
+    div h3{
+        display: inline-block;
+        padding: 0 1rem;
+        font-weight: lighter;
+    }
+    input{
+        height: 30px;
+        background: none;
+        border: none;
+        border-bottom: 2px solid #777;
+        padding: 0 0.5rem;
+        font-weight: bold;
+        font-size: 1rem;
+        color: blue;
+    }
+    p{
+        color: red;
+        font-weight: bold;
+        font-weight: lighter;
+    }
+    button{
+        padding: 0.5rem 1rem;
+        margin: 0.5rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: all .25s ease-out;
+        font-weight: bold;
+        background: #FFD24C;
+        border: 2px solid orange;
+        font-weight: lighter;
+        color: #333;
+    }
+    button:hover{
+        border: 2px solid #FFD24C;
+        background: white;
+        transition: all .25s ease-in;
+    }
+
 `;
 
 function now() {
@@ -122,19 +165,23 @@ const InfoPage = () => {
                 <h1>정보를 입력하세요.</h1>
             </InfoHeader>
             <InfoMain>
-                <h3>이름</h3>
-                <input
-                    placeholder='홍길동'
-                    value={name}
-                    onChange={onChangeName}
-                />
-                <h3>목표</h3>
-                <input
-                    placeholder='윗몸일으키기 1일 100회!'
-                    value={goal}
-                    onChange={onChangeGoal}
-                />
-                <span>{msg}</span>
+                <div>
+                    <h3>이름</h3>
+                    <input
+                        placeholder='홍길동'
+                        value={name}
+                        onChange={onChangeName}
+                    />
+                </div>
+                <div>
+                    <h3>목표</h3>
+                    <input
+                        placeholder='윗몸일으키기 1일 100회!'
+                        value={goal}
+                        onChange={onChangeGoal}
+                    />
+                </div>
+                <p>{msg}</p>
                 <div className='btn'>
                     <button
                         type='submit'
@@ -143,13 +190,13 @@ const InfoPage = () => {
                     </button>
                     {!checkPath() ?
                         <>
-                            <button><a href="/list">돌아가기</a></button>
+                            <button onClick={() => navigate('/list')}>돌아가기</button>
                             <button onClick={resetAll}>초기화하기</button>
                         </>
                         : ''}
                 </div>
             </InfoMain>
-        </Info>
+        </Info >
     )
 }
 
