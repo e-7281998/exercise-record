@@ -1,8 +1,4 @@
-import styled from "styled-components";
-
-const Header = styled.header`
-    color: red;
-`
+import { Header } from "../../style/headerInfoStyle";
 
 const HeaderInfo = () => {
     const name = JSON.parse(localStorage.getItem('name'));
@@ -13,7 +9,7 @@ const HeaderInfo = () => {
 
     return (
         <Header>
-            {name}님! "{goal}"을 시작한지 {passed}일 째 입니다.
+            {name}의 목표 <span className="goal">{goal}!</span> <span>D+{passed}</span>
         </Header>
     )
 }

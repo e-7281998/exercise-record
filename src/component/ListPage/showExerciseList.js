@@ -1,10 +1,7 @@
 import { useState } from 'react';
-import styled from "styled-components";
 import save from '../common/save';
+import { P, RecordList } from '../../style/showExerciseListStyle';
 
-const P = styled.p`
-    display: none;
-`
 const ShowExerciseList = () => {
     const [recordList, setRecordList] = useState(JSON.parse(localStorage.getItem('recordList')) || []);
 
@@ -29,9 +26,10 @@ const ShowExerciseList = () => {
     }
 
     return (
-        <ol reversed>
+        <ul>
             {recordList.map((list, n) => (
                 <li key={n}>
+                    <span>{recordList.length - n}</span>
                     <span>{list.EXERCISE}</span>
                     <span>{list.DAY}</span>
                     <button value={n} onClick={showMemo}>메모 펼치기</button>
@@ -39,7 +37,7 @@ const ShowExerciseList = () => {
                     <P>{list.INFO}</P>
                 </li>
             ))}
-        </ol>
+        </ul>
     )
 }
 

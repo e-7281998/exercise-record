@@ -1,78 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-
-import mainImg from '../img/운동_메인.jpg';
-
-const body = document.getElementsByTagName('body');
-console.log(window.innerWidth);
-body[0].style = `
-    width: 100%; 
-    height: ${window.innerHeight}px; 
-    background-image: url(${mainImg}); 
-    background-position: center;
-     background-size: cover; 
-     background-repeat: no-repeat;
-     text-align: center;
-`
-const Info = styled.div`
-    width: 100%;
-    box-sizing: border-box;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255,255,255,0.8);
-    padding: 1.5rem;
-`;
-const InfoHeader = styled.header`
-    h1{
-        margin: 0;
-        padding-bottom: 1.5rem;
-        font-weight: lighter;
-    }
-`;
-const InfoMain = styled.main`
-    div h3{
-        display: inline-block;
-        padding: 0 1rem;
-        font-weight: lighter;
-    }
-    input{
-        height: 30px;
-        background: none;
-        border: none;
-        border-bottom: 2px solid #777;
-        padding: 0 0.5rem;
-        font-weight: bold;
-        font-size: 1rem;
-        color: blue;
-    }
-    p{
-        color: red;
-        font-weight: bold;
-        font-weight: lighter;
-    }
-    button{
-        padding: 0.5rem 1rem;
-        margin: 0.5rem;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
-        transition: all .25s ease-out;
-        font-weight: bold;
-        background: #FFD24C;
-        border: 2px solid orange;
-        font-weight: lighter;
-        color: #333;
-    }
-    button:hover{
-        border: 2px solid #FFD24C;
-        background: white;
-        transition: all .25s ease-in;
-    }
-
-`;
+import { Info, InfoHeader, InfoMain } from '../style/infoPageStyle'
 
 function now() {
     const now = new Date();
@@ -84,7 +12,6 @@ function now() {
     // const passed = Math.round(day / (1000 * 60 * 60 * 24));
     // console.log(passed);
 }
-
 const InfoPage = () => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
