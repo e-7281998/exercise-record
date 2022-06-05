@@ -2,6 +2,7 @@ import InfoPage from "./pages/InfoPage";
 import ListPage from "./pages/ListPage";
 import { Routes, Route } from 'react-router-dom';
 import WritePage from "./pages/WritePage";
+import './script.js'
 
 const App = () => {
 
