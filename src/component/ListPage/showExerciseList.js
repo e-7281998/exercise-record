@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import save from '../common/save';
-import { P, RecordList } from '../../style/showExerciseListStyle';
+import { P, RecordListUl } from '../../style/showExerciseListStyle';
 
 const ShowExerciseList = () => {
     const [recordList, setRecordList] = useState(JSON.parse(localStorage.getItem('recordList')) || []);
@@ -26,7 +26,7 @@ const ShowExerciseList = () => {
     }
 
     return (
-        <ul>
+        <RecordListUl>
             {recordList.map((list, n) => (
                 <li key={n}>
                     <span>{recordList.length - n}</span>
@@ -37,7 +37,7 @@ const ShowExerciseList = () => {
                     <P>{list.INFO}</P>
                 </li>
             ))}
-        </ul>
+        </RecordListUl>
     )
 }
 
