@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Info, InfoHeader, InfoMain } from '../style/infoPageStyle'
+import { Btn } from '../style/commonStyle/button'
+import { goalColorChange } from '../script'
 
 function now() {
     const now = new Date();
@@ -13,10 +15,11 @@ function now() {
     // console.log(passed);
 }
 const InfoPage = () => {
+    goalColorChange('stop')
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [msg, setMsg] = useState('');
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const path = window.location.pathname;
 
     //path 확인 후 초기정보 입력인지 , 정보 수정인지 판단
@@ -30,7 +33,8 @@ const InfoPage = () => {
     //정보가 이미 있으면 /list 로 이동
     useEffect(() => {
         if (localStorage.getItem("name") !== null && checkPath())
-            navigate('/list');
+            window.location.href = '/list';
+        // navigate('/list');
         return;
     }, []);
 
@@ -63,14 +67,16 @@ const InfoPage = () => {
         if (checkPath()) {  //처음에만 날짜 같이 저장
             now();
         }
-        navigate('/list');
+        window.location.href = '/list';
+        // navigate('/list');
     }
     //초기화
     function resetAll() {
         const checkReset = window.confirm("모든 정보가 사라집니다. 정말 초기화 하시겠습니까?");
         if (checkReset) {
             localStorage.clear();
-            navigate('/');
+            window.location.href = '/'
+            // navigate('/');
             setName(() => '');
             setGoal(() => '')
         }
@@ -110,15 +116,15 @@ const InfoPage = () => {
                 </div>
                 <p>{msg}</p>
                 <div className='btn'>
-                    <button
+                    <Btn
                         type='submit'
                         onClick={onClick}
-                    >{checkPath() ? '저장하기' : '수정하기'}
-                    </button>
+                    ><a>{checkPath() ? '저장하기' : '수정하기'}</a>
+                    </Btn>
                     {!checkPath() ?
                         <>
-                            <button onClick={() => navigate('/list')}>돌아가기</button>
-                            <button onClick={resetAll}>초기화하기</button>
+                            <Btn><a href="/list">돌아가기</a></Btn>
+                            <Btn onClick={resetAll}><a>초기화하기</a></Btn>
                         </>
                         : ''}
                 </div>

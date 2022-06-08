@@ -1,6 +1,9 @@
+import { goalColorChange } from "../../script";
 import { Header } from "../../style/headerInfoStyle";
 
 const HeaderInfo = () => {
+    goalColorChange('start');
+
     const name = JSON.parse(localStorage.getItem('name'));
     const goal = JSON.parse(localStorage.getItem('goal'));
     const today = new Date();
