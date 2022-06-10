@@ -10,8 +10,10 @@ const ShowExerciseList = () => {
         const memo = document.getElementsByTagName("P");
         const styleState = window.getComputedStyle(memo[e.target.value]).getPropertyValue('display');
         if (styleState == 'none') {
+            e.target.parentNode.parentNode.style = ' background: rgb(214, 230, 242); border: 2px solid white;';
             memo[e.target.value].style.display = 'block';
         } else {
+            e.target.parentNode.parentNode.style = ' background: rgba(214, 230, 242, 0.5);';
             memo[e.target.value].style.display = 'none';
         }
     }
@@ -32,8 +34,10 @@ const ShowExerciseList = () => {
                     <span>{recordList.length - n}</span>
                     <span>{list.EXERCISE}</span>
                     <span>{list.DAY}</span>
-                    <button value={n} onClick={showMemo}>메모 펼치기</button>
-                    <button onClick={removeList} value={n}>삭제하기</button>
+                    <div>
+                        <button value={n} onClick={showMemo}>▼</button>
+                        <button onClick={removeList} value={n}>✕</button>
+                    </div>
                     <P>{list.INFO}</P>
                 </li>
             ))}
