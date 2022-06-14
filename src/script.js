@@ -1,21 +1,29 @@
 import mainImg from './img/운동_메인.jpg';
+import subImg from './img/운동_서브.jpg';
 
 const body = document.getElementsByTagName('body');
 export const windowH = window.innerHeight;
 const goal = document.getElementsByClassName('goal');
 const ExerciseList = document.getElementsByTagName('li');
 
+const pathName = window.location.pathname;
+var bgImg;
+if (pathName === '/list' || pathName === '/write') {
+    bgImg = subImg;
+} else {
+    bgImg = mainImg
+}
+
 body[0].style = `
     width: 100%; 
     height: ${windowH}px; 
-    background-image: url(${mainImg}); 
+    background-image: url(${bgImg}); 
     background-position: center;
      background-size: cover; 
      background-repeat: no-repeat;
      text-align: center;
 `;
 
-const pathName = window.location.pathname;
 
 //목표 색상 바꾸기
 const GoalColor = setInterval(function () {
@@ -46,3 +54,22 @@ export function showList() {
             clearInterval(showListInverval);
     }, 500);
 }
+
+export function get() {
+    const ul = document.getElementsByTagName('ul');
+    const li = document.getElementsByTagName('li');
+    var sum = 0;
+
+    // console.log(ul[0].offsetWidth);
+    for (var i = 0; i < li.length; i++) {
+        sum += li[i].offsetWidth;
+    }
+
+    if (ul[0].offsetWidth < sum) {
+        ul[0].classList.add = 'many';
+    } else {
+        ul[0].classList.remove = 'many';
+    }
+    console.log(ul[0].classList)
+}
+// get();

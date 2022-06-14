@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Add } from "../../style/addExerciseInfoStyle";
 import save from "../common/save";
+import { get } from "../../script.js";
 
 const AddExercise = () => {
     const [exerciseList, addExerciseList] = useState(JSON.parse(localStorage.getItem('EXERCISE')) || ['걷기']);
-    const [exerciseInput, setExerciseInput] = useState('')
+    const [exerciseInput, setExerciseInput] = useState('');
 
+    useEffect(() => {
+        get();
+    }, [exerciseList])
     //운동 종목 선택 시 값 보이기
     function clickExercise(e) {
         document.getElementsByClassName('selectEx')[0].innerText = e.target.innerText;
@@ -37,13 +42,13 @@ const AddExercise = () => {
     }
 
     return (
-        <>
+        <Add>
             <ul>
                 {exerciseList.map((list, n) => (
                     <li key={n}>
-                        <p onClick={clickExercise}>
+                        <span onClick={clickExercise}>
                             {list}
-                        </p>
+                        </span>
                         <button value={n} onClick={exerciseRemove}>X</button>
                     </li>
                 ))}
@@ -53,7 +58,7 @@ const AddExercise = () => {
                     value={exerciseInput} onChange={changeExerciseInput}></input>
                 <button onClick={addExercise}>운동종목 추가</button>
             </form>
-        </>
+        </Add>
     )
 }
 
