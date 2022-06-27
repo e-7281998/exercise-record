@@ -6,12 +6,14 @@ import { get } from "../../script.js";
 const AddExercise = () => {
     const [exerciseList, addExerciseList] = useState(JSON.parse(localStorage.getItem('EXERCISE')) || ['걷기']);
     const [exerciseInput, setExerciseInput] = useState('');
+    const [msg, setMsg] = useState('');
 
     useEffect(() => {
         get();
     }, [exerciseList])
     //운동 종목 선택 시 값 보이기
     function clickExercise(e) {
+        setMsg(() => '')
         document.getElementsByClassName('selectEx')[0].innerText = e.target.innerText;
     }
 
@@ -23,6 +25,13 @@ const AddExercise = () => {
     //운동 종목 추가
     function addExercise(e) {
         e.preventDefault();
+        // 운동종목 값 존재 여부 확인
+        if (exerciseInput.trim() === '') {
+            setMsg(() => '빈칸은 운동종목으로 등록할 수 없습니다.');
+            // console.log('빈칸은 입력할 수 없습니다.');
+            return;
+        }
+        setMsg(() => '');
         const newAddList = [...exerciseList, exerciseInput];
         addExerciseList(() => newAddList);
         save('EXERCISE', newAddList)
@@ -56,6 +65,7 @@ const AddExercise = () => {
             <form>
                 <input type="text" placeholder="복싱"
                     value={exerciseInput} onChange={changeExerciseInput}></input>
+                <p>{msg}</p>
                 <button onClick={addExercise}>운동종목 추가</button>
             </form>
         </Add>

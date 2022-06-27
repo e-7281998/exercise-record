@@ -38,4 +38,8 @@ export const Add = styled.main`
     span{
         margin-right: 0.3rem;
     }
+
+    form > p {
+        color: red;
+    }
 `;
