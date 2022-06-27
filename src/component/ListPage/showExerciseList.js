@@ -12,9 +12,12 @@ const ShowExerciseList = () => {
         if (styleState == 'none') {
             e.target.parentNode.parentNode.style = ' background: rgb(214, 230, 242); border: 2px solid white;';
             memo[e.target.value].style.display = 'block';
+            e.target.innerText = '▲';
         } else {
             e.target.parentNode.parentNode.style = ' background: rgba(214, 230, 242, 0.5);';
             memo[e.target.value].style.display = 'none';
+            e.target.innerText = '▼';
+
         }
     }
 
