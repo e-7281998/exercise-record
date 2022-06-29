@@ -60,16 +60,14 @@ export function get() {
     const li = document.getElementsByTagName('li');
     var sum = 0;
 
-    // console.log(ul[0].offsetWidth);
     for (var i = 0; i < li.length; i++) {
-        sum += li[i].offsetWidth;
+        sum += li[i].offsetWidth + 8;
     }
 
     if (ul[0].offsetWidth < sum) {
-        ul[0].classList.add = 'many';
+        ul[0].classList.add('many');
     } else {
-        ul[0].classList.remove = 'many';
+        ul[0].classList.remove('many');
     }
-    console.log(ul[0].classList)
 }
 // get();

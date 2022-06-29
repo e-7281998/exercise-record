@@ -52,7 +52,7 @@ const AddExercise = () => {
 
     return (
         <Add>
-            <ul>
+            <ul className="ul입니다. 하하">
                 {exerciseList.map((list, n) => (
                     <li key={n}>
                         <span onClick={clickExercise}>
