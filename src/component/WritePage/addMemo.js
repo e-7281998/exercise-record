@@ -17,22 +17,28 @@ const AddMemo = () => {
     function addRecord(e) {
         e.preventDefault();
         const selectedEx = document.getElementsByClassName('selectEx')[0].innerText;
+        const exerciseInfoTrim = exerciseInfo.trim();
         //운동종목 선택 여부 
         if (selectEx == selectedEx) {
             alert('운동종목을 선택하세요.');
+            return;
+        }
+        //기록 칸 공백 여부
+        if (exerciseInfoTrim == "") {
+            alert('관련 정보를 기록하세요.');
             return;
         }
         const newRecord = [
             {
                 DAY: `${year}.${month}.${date}.${day}`,
                 EXERCISE: selectedEx,
-                INFO: exerciseInfo
+                INFO: exerciseInfoTrim
             },
             ...record
         ]
         setRecord(() => newRecord);
         save('recordList', newRecord);
-        setExerciseInfo(() => '')
+        setExerciseInfo(() => '');
     }
     //운동 종목 추가 입력 값
     function changeExerciseInfo(e) {
