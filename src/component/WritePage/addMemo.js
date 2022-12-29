@@ -8,6 +8,7 @@ const AddMemo = () => {
     const date = today.getDate();
     const hanDay = ['일', '월', '화', '수', '목', '금', '토']
     const day = hanDay[today.getDay()];
+    const selectEx = '운동종목을 선택하세요';
 
     const [exerciseInfo, setExerciseInfo] = useState('')
     const [record, setRecord] = useState(JSON.parse(localStorage.getItem('recordList')) || [])
@@ -15,10 +16,16 @@ const AddMemo = () => {
     //메모 추가
     function addRecord(e) {
         e.preventDefault();
+        const selectedEx = document.getElementsByClassName('selectEx')[0].innerText;
+        //운동종목 선택 여부 
+        if (selectEx == selectedEx) {
+            alert('운동종목을 선택하세요.');
+            return;
+        }
         const newRecord = [
             {
                 DAY: `${year}.${month}.${date}.${day}`,
-                EXERCISE: document.getElementsByClassName('selectEx')[0].innerText,
+                EXERCISE: selectedEx,
                 INFO: exerciseInfo
             },
             ...record
@@ -33,7 +40,7 @@ const AddMemo = () => {
     }
     return (
         <div>
-            <p className="selectEx">운동종목을 선택하세요</p>
+            <p className="selectEx">{selectEx}</p>
             <form>
                 <textarea
                     placeholder='관련 정보를 기록하세요'
