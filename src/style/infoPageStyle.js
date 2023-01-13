@@ -9,7 +9,6 @@ export const Info = styled.div`
     transform: translate(-50%, -50%);
     background: rgba(255,255,255,0.8);
     padding: 1.5rem;
-    // opacity:0;
 `;
 export const InfoHeader = styled.header`
     h1{
@@ -31,7 +30,7 @@ export const InfoMain = styled.main`
         border-bottom: 2px solid #777;
         padding: 0 0.5rem;
         font-weight: bold;
-        font-size: 1rem;
+        font-size: 20px;
         color: blue;
     }
     p{

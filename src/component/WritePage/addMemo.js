@@ -1,5 +1,7 @@
 import { useState } from "react";
 import save from "../common/save";
+import { Btn } from "../../style/commonStyle/button";
+import { AddForm } from "../../style/addForm";
 
 const AddMemo = () => {
     const today = new Date();
@@ -45,19 +47,20 @@ const AddMemo = () => {
         setExerciseInfo(() => e.target.value);
     }
     return (
-        <div>
-            <p className="selectEx">{selectEx}</p>
-            <form>
-                <textarea
-                    placeholder='관련 정보를 기록하세요'
-                    type="text" cols="30" rows="10"
-                    onChange={changeExerciseInfo}
-                    value={exerciseInfo}>
-                </textarea>
-                <button type="submit"
-                    onClick={addRecord}>등록</button>
-            </form>
-        </div>
+        <AddForm>
+            <div>
+                <p className="selectEx">{selectEx}</p>
+                <Btn className="orange" type="submit"
+                    onClick={addRecord}>등록</Btn>
+            </div>
+            <textarea
+                placeholder='관련 정보를 기록하세요'
+                type="text" cols="50" rows="5"
+                onChange={changeExerciseInfo}
+                value={exerciseInfo}>
+            </textarea>
+
+        </AddForm>
     )
 }
 

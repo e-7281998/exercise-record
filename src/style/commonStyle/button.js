@@ -1,25 +1,40 @@
 import styled from "styled-components";
 
 export const Btn = styled.button`
-    margin: 0.5rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: all .25s ease-out;
-    font-weight: bold;
-    background: #FFD24C;
-    border: 2px solid orange;
-    font-weight: lighter;
-    color: #333;
+    border: 3px solid transparent;
+    background: darkblue;
+    margin: 10px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #fff;
 
-    a{
+    a {
+        font-size: 20px;
         display: block;
-        padding: 0.5rem 1rem;
+        height: 100%;
+        padding: 10px 20px;
+        color: #fff;
     }
 
-    :hover{
-    border: 2px solid orange;
-    background: white;
-    transition: all .25s ease-in;
+    :hover {
+        background: white;
+        border: 3px solid darkblue;
+        color: darkblue;
+
+        a{
+            color: darkblue;
+        }
     }
+
+    &.orange{
+        background: orange;
+        
+        :hover{
+            border: 3px solid orange;
+            background: white;
+            color: orange;
+            cursor: pointer;
+        }
+    }
+
 `

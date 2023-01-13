@@ -12,7 +12,7 @@ const HeaderInfo = () => {
 
     return (
         <Header>
-            {name}의 목표 <span className="goal">{goal}!</span> <span>D+{passed}</span>
+            {name}의 목표 <span className="goal">{goal}!</span> <span>{passed}일째!</span>
         </Header>
     )
 }

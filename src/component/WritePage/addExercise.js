@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Add } from "../../style/addExerciseInfoStyle";
 import save from "../common/save";
 import { get } from "../../script.js";
+import { Btn } from "../../style/commonStyle/button";
 
 const AddExercise = () => {
     const [exerciseList, addExerciseList] = useState(JSON.parse(localStorage.getItem('EXERCISE')) || ['걷기']);
@@ -52,7 +53,7 @@ const AddExercise = () => {
 
     return (
         <Add>
-            <ul className="ul입니다. 하하">
+            <ul>
                 {exerciseList.map((list, n) => (
                     <li key={n}>
                         <span onClick={clickExercise}>
@@ -63,10 +64,12 @@ const AddExercise = () => {
                 ))}
             </ul>
             <form>
-                <input type="text" placeholder="복싱"
-                    value={exerciseInput} onChange={changeExerciseInput}></input>
+                <div>
+                    <input type="text" placeholder="복싱"
+                        value={exerciseInput} onChange={changeExerciseInput}></input>
+                    <Btn className="orange" onClick={addExercise}>운동종목 추가</Btn>
+                </div>
                 <p>{msg}</p>
-                <button onClick={addExercise}>운동종목 추가</button>
             </form>
         </Add>
     )

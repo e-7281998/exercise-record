@@ -1,45 +1,59 @@
 import styled from "styled-components";
 
 export const Add = styled.main`
-    background: yellow;
-    ul{
+    ul {
         width: 80%;
         margin: 0 auto;
-        list-style:  none;
-        // overflow-x: scroll;
-        // white-space: nowrap;
-    
-        // 스크롤바 숨기기
-        // &::-webkit-scrollbar{
-        //     display: none;
-        // }
-    }
-    ul.many {
-        overflow-x: scroll;
+        overflow-x:auto;
+        // overflow-x:scroll;
         white-space: nowrap;
-        color: red;
-    }
-    
-    li{
-        display: inline-block;
-        padding: 0.5rem;
-        margin-right :0.5rem;
-        background: white;
-    }
-    li > button {
-        background: none;
-        border: none;
+        
+        li {
+            display: inline-block;
+            padding: 10px;
+            background: white;
+            margin: 10px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            color: #aaa;
 
-        :hover{
-            color: red;
-            cursor: pointer;
+            :hover{
+                cursor: pointer;
+                color: #333;
+            }
+
+            button {
+                background: none;
+                border: none;
+                margin-left: 5px;
+                color: #ccc;
+
+                :hover {
+                    color: red;
+                    cursor: pointer;
+                }
+            }
         }
     }
-    span{
-        margin-right: 0.3rem;
-    }
 
-    form > p {
-        color: red;
+    form{
+        margin-top: 10px;
+        
+        input {
+            font-size: 20px;
+            padding: 5px;
+            margin-right: 20px;
+        }
+
+        p {
+            color: darkred;
+            font-size: 20px;
+            margin: 0;
+            padding: 0 15px;
+        }
+        
+        button {
+            padding: 10px 20px;
+        }
     }
 `;
