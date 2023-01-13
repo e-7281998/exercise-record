@@ -2,7 +2,7 @@ import mainImg from './img/운동_메인.jpg';
 import subImg from './img/운동_서브.jpg';
 
 const body = document.getElementsByTagName('body');
-export const windowH = window.innerHeight;
+export const windowH = Math.max(window.innerHeight, 590);
 const goal = document.getElementsByClassName('goal');
 const ExerciseList = document.getElementsByTagName('li');
 

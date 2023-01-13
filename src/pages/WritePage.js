@@ -10,7 +10,7 @@ const WritePage = () => {
         <Write>
             <HeaderInfo />
             <nav>
-                <Btn><a href="/list">기록보기</a></Btn>
+                <Btn><a href="/list">돌아가기</a></Btn>
             </nav>
             <AddExercise />
             <AddMemo />

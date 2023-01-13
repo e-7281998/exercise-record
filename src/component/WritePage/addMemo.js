@@ -20,6 +20,7 @@ const AddMemo = () => {
         e.preventDefault();
         const selectedEx = document.getElementsByClassName('selectEx')[0].innerText;
         const exerciseInfoTrim = exerciseInfo.trim();
+
         //운동종목 선택 여부 
         if (selectEx == selectedEx) {
             alert('운동종목을 선택하세요.');
@@ -51,10 +52,10 @@ const AddMemo = () => {
             <div>
                 <p className="selectEx">{selectEx}</p>
                 <Btn className="orange" type="submit"
-                    onClick={addRecord}>등록</Btn>
+                    onClick={addRecord}>기록 저장하기</Btn>
             </div>
             <textarea
-                placeholder='관련 정보를 기록하세요'
+                placeholder='관련 정보를 기록하세요.'
                 type="text" cols="50" rows="5"
                 onChange={changeExerciseInfo}
                 value={exerciseInfo}>

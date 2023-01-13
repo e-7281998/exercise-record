@@ -25,6 +25,7 @@ export const InfoMain = styled.main`
     }
     input{
         height: 30px;
+        width: 200px;
         background: none;
         border: none;
         border-bottom: 2px solid #777;
