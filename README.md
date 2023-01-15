@@ -1,6 +1,6 @@
-[실행]
-git clone https://github.com/e-7281998/exercise-record.git
-npm start
+[실행] <br/>
+git clone https://github.com/e-7281998/exercise-record.git <br/>
+npm start<br/><br/>
 
 <a href="https://lw6rnu-3000.preview.csb.app">SITE</a>
 
@@ -17,6 +17,7 @@ npm start
 <img width="80%" src="https://user-images.githubusercontent.com/78722497/212540883-bb2a90ce-f97b-4088-99b1-25cb8ca8e227.png"/>
 <img width="80%" src="https://user-images.githubusercontent.com/78722497/212540889-5ddd5809-c838-408d-9353-1b79731e84bf.png"/>
 <img width="80%" src="https://user-images.githubusercontent.com/78722497/212540891-41f605ba-06be-4ce5-bfd2-79eb49d9d330.png"/>
+<img width="80%" src="https://user-images.githubusercontent.com/78722497/212540892-4cc132a5-7981-4dde-9983-8559e1af8ebf.png"/>
 <img width="80%" src="https://user-images.githubusercontent.com/78722497/212540895-a4bba915-0fa0-4220-adc9-7ef3c223280e.png"/>
 <img width="80%" src="https://user-images.githubusercontent.com/78722497/212540897-ec472356-f660-4a53-bd7d-7894880e7c6c.png"/>
 <img width="80%" src="https://user-images.githubusercontent.com/78722497/212540904-d38e85a0-6f82-4dc4-be0f-c703c2aa547c.png"/>
