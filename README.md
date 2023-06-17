@@ -1,5 +1,6 @@
 [실행] <br/>
 git clone https://github.com/e-7281998/exercise-record.git <br/>
+npm init<br/>
 npm start<br/><br/>
 
 <a href="https://lw6rnu-3000.preview.csb.app">Site Link</a>
